@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
         binding.etPercentageNum.hint = "% $INITIAL_PERCENT"
         binding.sbPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                binding.etPercentageNum.text.clear()
+                //binding.etPercentageNum.text.clear()
                 binding.etPercentageNum.hint = "% $p1"
                 calculatePercentage()
             }
@@ -55,7 +55,12 @@ class HomeFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
+                if (!binding.etPercentageNum.text.isEmpty()){
+                    binding.sbPercentageBar.progress = p0.toString().toDouble().toInt()
+                    calculatePercentageWithUserInput()
+                }
                 calculatePercentageWithUserInput()
+
             }
 
         })
@@ -71,7 +76,7 @@ class HomeFragment : Fragment() {
         //Get data from user
         val inputNumber : Double = binding.etNumber.text.toString().toDouble()
         val inputPercent : Double = binding.etPercentageNum.text.toString().toDouble()
-        //val inputSeekBar : Int = binding.sbPercentageBar.progress
+
         // Calculation
         val calculatedPercent : Double = (inputPercent*inputNumber)/100
         val calculatedTotal : Double = inputNumber + calculatedPercent
