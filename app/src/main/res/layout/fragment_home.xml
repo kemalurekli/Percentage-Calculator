@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#E4EAF3"
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment">
 
@@ -102,9 +103,10 @@
         android:textStyle="bold"
         android:inputType="numberDecimal"
         android:textColorHint="@color/teal_200"
-        android:maxLength="6"
+        android:maxLength="7"
         android:textColor="@color/teal_200"
         android:textSize="16sp"
+        android:ems="6"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/sbPercentageBar"
         app:layout_constraintStart_toStartOf="@+id/sbPercentageBar"

@@ -34,11 +34,12 @@ class HomeFragment : Fragment() {
         binding.etPercentageNum.hint = "% $INITIAL_PERCENT"
         binding.sbPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                //binding.etPercentageNum.text.clear()
                 binding.etPercentageNum.hint = "% $p1"
                 calculatePercentage()
             }
-            override fun onStartTrackingTouch(p0: SeekBar?) {}
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+                binding.etPercentageNum.text.clear()
+            }
             override fun onStopTrackingTouch(p0: SeekBar?) {}
         })
         binding.etNumber.addTextChangedListener(object : TextWatcher{
