@@ -31,10 +31,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[HomeFragmentViewModel::class.java]
         binding.sbPercentageBar.progress = INITIAL_PERCENT
-        binding.tvPercentageNum.text = "% $INITIAL_PERCENT"
+        binding.etPercentageNum.hint = "% $INITIAL_PERCENT"
         binding.sbPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                binding.tvPercentageNum.text = "% $p1"
+                binding.etPercentageNum.text.clear()
+                binding.etPercentageNum.hint = "% $p1"
                 calculatePercentage()
             }
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -47,11 +48,43 @@ class HomeFragment : Fragment() {
                 calculatePercentage()
             }
         })
+
+        binding.etPercentageNum.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                calculatePercentageWithUserInput()
+            }
+
+        })
+
     }
+
+    private fun calculatePercentageWithUserInput() {
+        if(binding.etNumber.text.isEmpty() || binding.etPercentageNum.text.isEmpty()){
+            binding.tvTotalResultNum.text = "Enter a value"
+            binding.tvPercentageResult.text = "0"
+            return
+        }
+        //Get data from user
+        val inputNumber : Double = binding.etNumber.text.toString().toDouble()
+        val inputPercent : Double = binding.etPercentageNum.text.toString().toDouble()
+        //val inputSeekBar : Int = binding.sbPercentageBar.progress
+        // Calculation
+        val calculatedPercent : Double = (inputPercent*inputNumber)/100
+        val calculatedTotal : Double = inputNumber + calculatedPercent
+        // Update UI
+        binding.tvPercentageResult.text = "%.2f".format(calculatedPercent)
+        binding.tvTotalResultNum.text = "%.2f".format(calculatedTotal)
+        binding.tvExplanation.text = "%$inputPercent of $inputNumber is ${binding.tvPercentageResult.text} and total value is ${binding.tvTotalResultNum.text}"    }
+
+
     private fun calculatePercentage() {
         if(binding.etNumber.text.isEmpty()){
-            binding.tvTotalResultNum.text = ""
-            binding.tvPercentageResult.text = ""
+            binding.tvTotalResultNum.text = "Enter a value"
+            binding.tvPercentageResult.text = "0"
             return
         }
         //Get data from user
@@ -63,7 +96,9 @@ class HomeFragment : Fragment() {
         // Update UI
         binding.tvPercentageResult.text = "%.2f".format(calculatedPercent)
         binding.tvTotalResultNum.text = "%.2f".format(calculatedTotal)
+        binding.tvExplanation.text = "%$inputSeekBar of $inputNumber is ${binding.tvPercentageResult.text} and total value is ${binding.tvTotalResultNum.text}"
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

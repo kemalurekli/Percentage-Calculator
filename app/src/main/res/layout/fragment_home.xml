@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:fontFamily="@font/basic"
         android:text="Number :"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -21,7 +22,8 @@
         android:id="@+id/tvPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/basic"
         android:text="Percentage :"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -32,32 +34,32 @@
         android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/basic"
         android:text="Result :"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tvNumber"
-        app:layout_constraintTop_toBottomOf="@+id/tvPercentageNum" />
+        app:layout_constraintTop_toBottomOf="@+id/etPercentageNum" />
 
     <TextView
         android:id="@+id/tvTotalResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Total :"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/tvNumber"
-        app:layout_constraintTop_toBottomOf="@+id/tvResult"
- />
+        app:layout_constraintStart_toStartOf="@+id/tvResult"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
 
     <EditText
         android:id="@+id/etNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="13"
+        android:ems="11"
         android:hint="Enter Number"
         android:inputType="numberDecimal"
-        android:minHeight="48dp"
+        android:maxLength="10"
         app:layout_constraintBottom_toBottomOf="@+id/tvNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvNumber"
@@ -69,40 +71,57 @@
         android:layout_height="wrap_content"
         android:max="100"
         app:layout_constraintBottom_toBottomOf="@+id/tvPercentage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvPercentage"
+        app:layout_constraintStart_toStartOf="@+id/etNumber"
         app:layout_constraintTop_toTopOf="@+id/tvPercentage" />
 
     <TextView
         android:id="@+id/tvPercentageResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="18.3"
+        android:fontFamily="@font/basic"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvResult"
+        app:layout_constraintStart_toStartOf="@+id/sbPercentageBar"
         app:layout_constraintTop_toTopOf="@+id/tvResult" />
 
     <TextView
         android:id="@+id/tvTotalResultNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="118.3"
+        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvTotalResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvTotalResult"
+        app:layout_constraintStart_toStartOf="@+id/tvPercentageResult"
         app:layout_constraintTop_toTopOf="@+id/tvTotalResult" />
 
-    <TextView
-        android:id="@+id/tvPercentageNum"
+    <EditText
+        android:id="@+id/etPercentageNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%10"
         android:textStyle="bold"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/teal_200"
+        android:maxLength="4"
+        android:textColor="@color/teal_200"
+        android:textSize="16sp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/sbPercentageBar"
         app:layout_constraintStart_toStartOf="@+id/sbPercentageBar"
         app:layout_constraintTop_toBottomOf="@+id/sbPercentageBar" />
+
+    <TextView
+        android:id="@+id/tvExplanation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="@font/basic"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalResultNum" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
