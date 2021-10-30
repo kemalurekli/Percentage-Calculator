@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.kemalurekli.percentagecalculator.databinding.FragmentHomeBinding
 import com.kemalurekli.percentagecalculator.viewmodel.HomeFragmentViewModel
 
@@ -17,6 +20,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel : HomeFragmentViewModel
+    lateinit var mAdView : AdView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +33,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[HomeFragmentViewModel::class.java]
+
+
+        MobileAds.initialize(requireContext()) {}
+
+        mAdView = binding.adView
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+
         binding.sbPercentageBar.progress = INITIAL_PERCENT
         binding.etPercentageNum.hint = "$INITIAL_PERCENT"
         binding.sbPercentageBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
@@ -101,6 +114,10 @@ class HomeFragment : Fragment() {
         binding.tvPercentageResult.text = "%.2f".format(calculatedPercentageFromVM)
         binding.tvTotalResultNum.text = "%.2f".format(calculatedResultFromVM)
         binding.tvExplanation.text = "%$inputSeekBar of $inputNumber is ${binding.tvPercentageResult.text} and total value is ${binding.tvTotalResultNum.text}"
+
+
+
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
