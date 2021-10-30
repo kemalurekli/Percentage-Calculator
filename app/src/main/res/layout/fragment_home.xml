@@ -100,14 +100,14 @@
         android:id="@+id/etPercentageNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:inputType="numberDecimal"
-        android:textColorHint="@color/teal_200"
-        android:maxLength="7"
-        android:textColor="@color/teal_200"
-        android:textSize="16sp"
-        android:ems="6"
         android:layout_marginTop="10dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/sbPercentageBar"
         app:layout_constraintStart_toStartOf="@+id/sbPercentageBar"
         app:layout_constraintTop_toBottomOf="@+id/sbPercentageBar" />
@@ -116,7 +116,9 @@
         android:id="@+id/tvExplanation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/basic"
         android:text=""
         android:textSize="18sp"
@@ -124,6 +126,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTotalResultNum" />
 
+    <TextView
+        android:id="@+id/tv_Symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/basic"
+        android:text="%"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/etPercentageNum"
+        app:layout_constraintEnd_toStartOf="@+id/etPercentageNum"
+        app:layout_constraintTop_toTopOf="@+id/etPercentageNum" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
