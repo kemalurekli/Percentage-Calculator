@@ -3,6 +3,8 @@ This is a single page application. There is one activity with a fragment.
 The app's purpose is calculating percentage with seekbar or manually user inputs.
 The application is using some jetpack libraries such as viewbinding, viewmodel etc.
 
+## _Now, Available for Play Store_ [**Click**](https://play.google.com/store/apps/details?id=com.kemalurekli.percentagecalculator "Click")
+
 #### App Screenshot
 
 <table>
@@ -11,6 +13,6 @@ The application is using some jetpack libraries such as viewbinding, viewmodel e
 
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/66143323/139576939-b635fd17-647c-4633-996a-7d801afc7abe.png" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/66143323/148500871-31de39c5-8d67-4830-ad17-7e40b9abd4f6.png" width=270 height=480></td>
   </tr>
  </table>
